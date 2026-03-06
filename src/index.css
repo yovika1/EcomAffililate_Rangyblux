@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    /* Core brand colors */
+    --background: 38 30% 97%;
+    --foreground: 340 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 340 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 340 25% 12%;
+
+    /* Deep wine/plum primary */
+    --primary: 340 65% 22%;
+    --primary-foreground: 38 30% 97%;
+
+    /* Warm gold accent */
+    --accent: 38 85% 52%;
+    --accent-foreground: 340 25% 12%;
+
+    --secondary: 350 25% 93%;
+    --secondary-foreground: 340 40% 20%;
+
+    --muted: 38 20% 93%;
+    --muted-foreground: 340 15% 50%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 38 20% 88%;
+    --input: 38 20% 88%;
+    --ring: 340 65% 22%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --gold: 38 85% 52%;
+    --gold-light: 42 90% 68%;
+    --wine: 340 65% 22%;
+    --wine-light: 340 50% 35%;
+    --cream: 38 30% 97%;
+    --cream-dark: 38 25% 92%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(340 65% 18%) 0%, hsl(340 50% 28%) 50%, hsl(38 85% 42%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(38 85% 52%), hsl(42 90% 68%));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(38 30% 98%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px hsl(340 30% 15% / 0.08);
+    --shadow-md: 0 4px 20px hsl(340 30% 15% / 0.12);
+    --shadow-lg: 0 8px 40px hsl(340 30% 15% / 0.18);
+    --shadow-gold: 0 4px 20px hsl(38 85% 52% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+
+  .bg-gold {
+    background-color: hsl(var(--gold));
+  }
+
+  .bg-wine {
+    background-color: hsl(var(--wine));
+  }
+
+  .border-gold {
+    border-color: hsl(var(--gold));
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--cream-dark));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--wine));
+  border-radius: 3px;
+}
