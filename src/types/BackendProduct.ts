@@ -10,6 +10,10 @@ export interface BackendProduct {
   reviewsCount: number;
   affiliateUrl: string;
   description?: string;
-  details?: string;
-  tags?: string[];
+ details?: {
+    _id: string;
+    name: string;
+    value: string;
+  }[]; 
+   tags?: string[];
 }

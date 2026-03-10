@@ -3,7 +3,8 @@ import axios from "axios";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import AIChatWidget, { AIChatTrigger } from "@/components/AIChatWidget";
+import AIChatWidget from "@/components/AIChatWidget";
+import { AIChatTrigger } from "@/components/AIChatTrigger";
 import { SlidersHorizontal, ChevronDown } from "lucide-react";
 import type { BackendBlog } from "@/types/BackendBlog";
 import type { Product } from "@/types/Products";
@@ -25,7 +26,9 @@ const [blogs, setBlogs] = useState<BackendBlog[]>([]);
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:8081/getBlogs");
+        const res = await axios.get(
+  `http://localhost:8081/getBlogs?category=${category}&subCategory=${subCategory}`
+)
         const data = res.data.blogs || res.data;
         if (Array.isArray(data)) {
           setBlogs(data);
@@ -59,8 +62,8 @@ const [blogs, setBlogs] = useState<BackendBlog[]>([]);
       subCategory:blog.subCategory,
       badge: blog.badge || "",
       category: blog.category,
-      description: p.description || "",
-      details: blog.details?.map(d => d.value) || [],
+      // description: p.description || "",
+      // details: blog.details?.map(d => d.value) || [],
       tags: p.tags || [],
     };
   };

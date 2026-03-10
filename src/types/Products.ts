@@ -20,7 +20,11 @@ export interface Product {
   category: string;
 subCategory?: string; 
 
-   description?: string;
-  details?: string[];
-  tags?: string[];
+  //  description?: string;
+ details?: {
+    _id: string;
+    name: string;
+    value: string;
+  }[];
+    tags?: string[];
 }

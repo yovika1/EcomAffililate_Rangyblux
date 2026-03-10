@@ -5,7 +5,8 @@ import axios from "axios";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import AIChatWidget, { AIChatTrigger } from "@/components/AIChatWidget";
+import AIChatWidget from "@/components/AIChatWidget";
+import { AIChatTrigger } from "@/components/AIChatTrigger";
 
 import { Star } from "lucide-react";
 import type { Product } from "@/types/Products";
@@ -14,6 +15,11 @@ interface BlogType {
   _id: string;
   category: string;
   badge?: string;
+   details?: {
+    _id: string;
+    name: string;
+    value: string;
+  }[]; 
   product?: {
     _id: string;
     productName: string;
@@ -25,6 +31,7 @@ interface BlogType {
     reviewsCount: number;
     affiliateUrl: string;
     description?: string;
+    
   };
 }
 
@@ -79,7 +86,8 @@ const ProductPage = () => {
       affiliateUrl: blog.product.affiliateUrl,
       badge: blog.badge || "",
       category: blog.category,
-      description: blog.product.description || "",
+  details: blog.details || [],
+      // description: blog.product.description || "",
     };
   };
 
@@ -163,10 +171,17 @@ const ProductPage = () => {
                       ₹{product.originalPrice}
                     </span>
                   </div>
-
+{/* 
                   <p className="text-muted-foreground">
                     {product.description}
-                  </p>
+                  </p> */}
+                  <ul className="text-sm text-muted-foreground space-y-1">
+                    {product.details?.map((d) => (
+                      <li key={d._id}>
+                        <span className="font-medium text-foreground">{d.name}</span> — {d.value}
+                      </li>
+                    ))}
+                  </ul>
 
                   <a
                     href={product.affiliateUrl}

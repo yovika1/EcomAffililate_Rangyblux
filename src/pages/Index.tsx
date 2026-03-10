@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import AIChatWidget, { AIChatTrigger } from "@/components/AIChatWidget";
+import AIChatWidget from "@/components/AIChatWidget";
 import Footer from "@/components/Footer";
+import { AIChatTrigger } from "@/components/AIChatTrigger";
 import ProductCard from "@/components/ProductCard";
 
 import { Sparkles, Shield, Truck, RefreshCw, Flame, ArrowRight } from "lucide-react";

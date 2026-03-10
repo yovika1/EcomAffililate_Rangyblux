@@ -4,7 +4,8 @@ import axios from "axios";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import AIChatWidget, { AIChatTrigger } from "@/components/AIChatWidget";
+import AIChatWidget from "@/components/AIChatWidget";
+import { AIChatTrigger } from "@/components/AIChatTrigger";
 import { Flame, TrendingUp } from "lucide-react";
 
 import type { Product } from "@/types/Products";
@@ -20,7 +21,7 @@ interface ProductType {
   reviewsCount: number;
   affiliateUrl: string;
   description?: string;
-  details?: string;
+  // details?: string;
   tags?: string[];
 }
 
@@ -82,20 +83,22 @@ const TrendingPage = () => {
           badge: blog.badge || "",
           category: blog.category,
           description: p.description || "",
-          details: p.details ? [p.details] : [],
+          // details: p.details ? [p.details] : [],
           tags: p.tags || [],
         };
       });
   }, [blogs]);
 
   // ===== TRENDING =====
-  const trending = useMemo(() => {
-    return [...products]
-      .sort((a, b) => b.rating - a.rating)
-      .filter(
-        (p) => activeFilter === "All" || p.category === activeFilter
-      );
-  }, [products, activeFilter]);
+const trending = useMemo(() => {
+  return products
+    .filter(
+      (p) =>
+        p.rating >= 4.3 &&
+        (activeFilter === "All" || p.category === activeFilter)
+    )
+    .sort((a, b) => b.rating - a.rating);
+}, [products, activeFilter]);
 
   return (
     <div className="min-h-screen bg-background">
