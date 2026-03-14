@@ -102,7 +102,7 @@ const Navbar = ({ onOpenChat }: NavbarProps) => {
               AI Stylist
             </button>
 
-            <Search className="w-5 h-5 text-muted-foreground cursor-pointer" />
+            {/* <Search className="w-5 h-5 text-muted-foreground cursor-pointer" /> */}
 
             <button
               className="md:hidden"

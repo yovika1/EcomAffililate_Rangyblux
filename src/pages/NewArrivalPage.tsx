@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import AIChatWidget from "@/components/AIChatWidget";
 import { AIChatTrigger } from "@/components/AIChatTrigger";
-import { Flame, TrendingUp } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 import type { Product } from "@/types/Products";
 
@@ -21,7 +21,6 @@ interface ProductType {
   reviewsCount: number;
   affiliateUrl: string;
   description?: string;
-  // details?: string;
   tags?: string[];
 }
 
@@ -29,10 +28,11 @@ interface BlogType {
   _id: string;
   category: string;
   badge?: string;
+  createdAt: string;
   product?: ProductType;
 }
 
-const TrendingPage = () => {
+const NewArrivalPage = () => {
   const [chatOpen, setChatOpen] = useState(false);
   const [blogs, setBlogs] = useState<BlogType[]>([]);
   const [activeFilter, setActiveFilter] = useState("All");
@@ -59,10 +59,10 @@ const TrendingPage = () => {
       }
     };
 
-
     fetchBlogs();
   }, []);
 
+  // Convert blogs → products
   const products: Product[] = useMemo(() => {
     return blogs
       .filter((b) => b.product)
@@ -71,7 +71,7 @@ const TrendingPage = () => {
 
         return {
           id: p._id,
-           blogId: blog._id,
+          blogId: blog._id,
           name: p.productName,
           image: p.imageUrl,
           price: Number(p.currentPrice) || 0,
@@ -83,25 +83,29 @@ const TrendingPage = () => {
           badge: blog.badge || "",
           category: blog.category,
           description: p.description || "",
-          // details: p.details ? [p.details] : [],
           tags: p.tags || [],
         };
       });
   }, [blogs]);
 
-  // ===== TRENDING =====
-const trending = useMemo(() => {
-  return products
-    .filter(
-      (p) =>
-        p.rating >= 3.9 &&
-              p.badge?.toLowerCase() === "trending" &&
+  // ===== NEW ARRIVALS =====
+  const newArrivals = useMemo(() => {
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
 
+    return products.filter((p) => {
+      const blog = blogs.find((b) => b._id === p.blogId);
+      if (!blog) return false;
+
+      const created = new Date(blog.createdAt);
+
+      return (
+        created > sevenDaysAgo &&
+         p.badge?.toLowerCase() === "new arrival" &&
         (activeFilter === "All" || p.category === activeFilter)
-    )
-    .sort((a, b) => b.rating - a.rating);
-}, [products, activeFilter]);
-
+      );
+    });
+  }, [products, blogs, activeFilter]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -113,16 +117,18 @@ const trending = useMemo(() => {
         <section className="bg-primary py-20 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center gap-2 mb-3">
-              <Flame className="w-6 h-6 text-accent" />
+              <Sparkles className="w-6 h-6 text-accent" />
               <p className="text-sm font-semibold uppercase text-accent">
-                Hot Right Now
+                Just Arrived
               </p>
             </div>
+
             <h1 className="text-5xl font-bold text-primary-foreground mb-4">
-              Trending Now
+              New Arrivals
             </h1>
+
             <p className="text-primary-foreground/70 max-w-xl">
-              Our most-loved, highest-rated picks across fashion & beauty.
+              Discover the latest products recently added to our collection.
             </p>
           </div>
         </section>
@@ -130,9 +136,8 @@ const trending = useMemo(() => {
         {/* FILTERS */}
         <div className="border-b border-border bg-card sticky top-16 z-30">
           <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3 flex-wrap">
-            <TrendingUp className="w-4 h-4 text-accent" />
             <span className="text-sm text-muted-foreground mr-2">
-              {trending.length} trending picks
+              {newArrivals.length} new products
             </span>
 
             {filters.map((f) => (
@@ -157,7 +162,7 @@ const trending = useMemo(() => {
             <p className="text-center">Loading...</p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {trending.map((product) => (
+              {newArrivals.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
@@ -176,4 +181,4 @@ const trending = useMemo(() => {
   );
 };
 
-export default TrendingPage;
+export default NewArrivalPage;

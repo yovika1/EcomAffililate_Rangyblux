@@ -8,7 +8,6 @@ interface HeroSectionProps {
 const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden pt-16">
-      {/* Background Image */}
       <div className="absolute inset-0">
         <img
           src={heroBanner}
@@ -19,16 +18,13 @@ const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
         <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-xl">
-          {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm border border-accent/40 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-6 animate-slide-up">
             <TrendingUp className="w-3.5 h-3.5" />
             <span>New Arrivals — Spring 2025</span>
           </div>
 
-          {/* Heading */}
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight mb-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Style That
             <br />
@@ -41,7 +37,6 @@ const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
             Discover curated trending dresses, jeans & makeup — handpicked for your unique style. Let our AI stylist help you find your perfect look.
           </p>
 
-          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 animate-slide-up" style={{ animationDelay: '0.3s' }}>
             <a
               href="#trending"
@@ -59,7 +54,6 @@ const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
             </button>
           </div>
 
-          {/* Stats */}
           <div className="flex items-center gap-6 mt-10 animate-slide-up" style={{ animationDelay: '0.4s' }}>
             <div className="flex -space-x-2">
               {[1, 2, 3, 4].map((i) => (
@@ -77,7 +71,6 @@ const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-float">
         <span className="text-primary-foreground/50 text-xs font-body">Scroll</span>
         <div className="w-px h-8 bg-gradient-to-b from-primary-foreground/50 to-transparent" />

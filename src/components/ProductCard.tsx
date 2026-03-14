@@ -36,13 +36,13 @@ const ProductCard = ({ product }: ProductCardProps) => {
         {product.discountPercent && (
           <div className="absolute top-3 right-3">
             <span className="gradient-gold text-foreground text-xs font-bold px-2.5 py-1 rounded-full font-body">
-              {product.discountPercent}
+              {product.discountPercent}% OFF
             </span>
           </div>
         )}
 
         {/* Like */}
-        <button
+        {/* <button
           onClick={(e) => { 
             e.preventDefault(); 
             setLiked(!liked); 
@@ -54,7 +54,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               liked ? "fill-rose-500 text-rose-500" : "text-muted-foreground"
             }`}
           />
-        </button>
+        </button> */}
       </Link>
 
       {/* Info */}

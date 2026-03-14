@@ -28,7 +28,7 @@ const CategorySection = ({ categories }: Props) => {
         {categories.map((cat) => (
           <Link
           key={cat.name}
-  to={`/category/${cat.slug}`}
+          to={`/category/${cat.slug}`}
           className="group relative overflow-hidden rounded-2xl aspect-[3/4] block"
             style={{ boxShadow: "var(--shadow-lg)" }}
           >

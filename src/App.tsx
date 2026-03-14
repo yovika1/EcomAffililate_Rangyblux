@@ -11,6 +11,12 @@ import TrendingPage from "./pages/TrendingPage";
 import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
 import CategoryPage from "./pages/CategoryPage";
+// import { AboutUs } from "./pages/AboutUs";
+import { PrivacyPolicy } from "./pages/Privacy Policy";
+import { AffiliateDisclosure } from "./pages/AffiliateDisclosure";
+import { TermsService } from "./pages/TermsofService";
+import { AboutContactFAQ } from "./pages/help/UserHelp";
+import NewArrivalPage from "./pages/NewArrivalPage";
 
 const queryClient = new QueryClient();
 
@@ -23,11 +29,20 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
 
-          {/* <Route path="/dresses" element={<DressesPage />} /> */}
-      <Route path="/category/:category/:subCategory" element={<CategoryPage />} />
-          {/* <Route path="/jeans" element={<JeansPage />} /> */}
-          {/* <Route path="/makeup" element={<MakeupPage />} /> */
-          <Route path="/category/general/trending" element={<TrendingPage />} />}
+          <Route path="/help" element={<AboutContactFAQ />} />
+          <Route
+            path="/category/:category/:subCategory?"
+            element={<CategoryPage />}
+          />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route
+            path="/affiliate-disclosure"
+            element={<AffiliateDisclosure />}
+          />
+          <Route path="/terms" element={<TermsService />} />
+          <Route path="/category/general/trending" element={<TrendingPage />} />
+          <Route path="/category/general/NewArrival" element={<NewArrivalPage />} />
+          
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

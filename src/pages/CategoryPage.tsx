@@ -14,21 +14,24 @@ import { useParams } from "react-router-dom";
 const CategoryPage = () => {
 
 const { category, subCategory } = useParams();
-const heroTitle = `${subCategory} Collection`;
-const heroSub = `Explore best ${subCategory} in ${category}`;
+const heroTitle = `${subCategory || category} Collection`;
+const heroSub = `Explore best ${subCategory || category}`;
 const heroBg = "bg-gradient-to-r from-pink-100 to-rose-200";
 const heroEmoji = "✨";  const [chatOpen, setChatOpen] = useState(false);
 const [blogs, setBlogs] = useState<BackendBlog[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [sortBy, setSortBy] = useState("default");
-  const [filterDiscount, setFilterDiscount] = useState(false);
+const [loading, setLoading] = useState(true);
+const [sortBy, setSortBy] = useState("default");
+const [filterDiscount, setFilterDiscount] = useState(false);
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get(
-  `http://localhost:8081/getBlogs?category=${category}&subCategory=${subCategory}`
-)
+        const url = subCategory
+      ? `http://localhost:8081/getBlogs?category=${category}&subCategory=${subCategory}`
+        : `http://localhost:8081/getBlogs?category=${category}`;
+        
+      
+      const res = await axios.get(url);
         const data = res.data.blogs || res.data;
         if (Array.isArray(data)) {
           setBlogs(data);
@@ -44,7 +47,7 @@ const [blogs, setBlogs] = useState<BackendBlog[]>([]);
     };
 
     fetchBlogs();
-  }, []);
+  }, [category, subCategory]);
 
   const mapBlogToProduct = (blog: BackendBlog): Product => {
     const p = blog.product!;
@@ -71,14 +74,16 @@ const [blogs, setBlogs] = useState<BackendBlog[]>([]);
   const filteredProducts = useMemo(() => {
   let filtered = blogs
   .filter((b) => {
-    if (!b.product) return false;
+   if (!b.product) return false;
 
-return (
-        (b.category || "").toLowerCase() ===
-          (category || "").toLowerCase() &&
-        (b.subCategory || "").toLowerCase() ===
-          (subCategory || "").toLowerCase()
-      );
+      if (subCategory) {
+        return (
+          b.category?.toLowerCase() === category?.toLowerCase() &&
+          b.subCategory?.toLowerCase() === subCategory?.toLowerCase()
+        );
+      }
+
+      return b.category?.toLowerCase() === category?.toLowerCase();
     })
   .map((b) => mapBlogToProduct(b));
 

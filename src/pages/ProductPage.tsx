@@ -48,7 +48,6 @@ const ProductPage = () => {
 
     const fetchData = async () => {
       try {
-        // 1️⃣ Current product
         const singleRes = await axios.get(
           `http://localhost:8081/getBlogs/${id}`
         );
