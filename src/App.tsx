@@ -4,14 +4,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-// import DressesPage from "./pages/DressesPage";
-// import JeansPage from "./pages/JeansPage";
-// import MakeupPage from "./pages/MakeupPage";
+
 import TrendingPage from "./pages/TrendingPage";
 import ProductPage from "./pages/ProductPage";
 import NotFound from "./pages/NotFound";
 import CategoryPage from "./pages/CategoryPage";
-// import { AboutUs } from "./pages/AboutUs";
 import { PrivacyPolicy } from "./pages/Privacy Policy";
 import { AffiliateDisclosure } from "./pages/AffiliateDisclosure";
 import { TermsService } from "./pages/TermsofService";

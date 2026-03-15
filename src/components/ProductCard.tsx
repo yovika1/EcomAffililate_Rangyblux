@@ -10,7 +10,7 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const [liked, setLiked] = useState(false);
+  // const [liked, setLiked] = useState(false);
 
   return (
     <div className="group bg-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-border flex flex-col">

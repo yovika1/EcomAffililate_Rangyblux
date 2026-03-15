@@ -115,7 +115,7 @@ interface AIChatTriggerProps {
   if (!isOpen) return null;
 
   return (
-<div className="fixed bottom-6 right-6 bg-white  z-50 w-[360px] h-[520px] flex flex-col shadow-xl">
+<div className="fixed bottom-6 right-4 bg-white  z-50 w-[360px] h-[520px] flex flex-col shadow-xl">
         {/* Header */}
       <div className="bg-primary rounded-t-2xl px-4 py-3 flex justify-between">
         <p className="text-primary-foreground font-semibold">
@@ -143,7 +143,7 @@ interface AIChatTriggerProps {
             </div>
 
             <div className="max-w-[70%] space-y-2">
-              <div className="text-sm bg-muted px-3 py-2 rounded-xl">
+              <div className="text-xs bg-muted px-3 py-2 rounded-xl">
                 {msg.content}
               </div>
               {msg.fallbackMessage && (

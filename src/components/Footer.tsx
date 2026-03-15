@@ -12,16 +12,7 @@ const Footer = () => {
             <h3 className="font-display text-2xl font-bold mb-1">Get Style Alerts</h3>
             <p className="text-primary-foreground/60 text-sm font-body">New arrivals, exclusive deals & styling tips delivered to you.</p>
           </div>
-          <div className="flex gap-2 w-full md:w-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 md:w-64 bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/40 border border-primary-foreground/20 px-4 py-2.5 rounded-full text-sm font-body outline-none focus:border-accent"
-            />
-            <button className="gradient-gold text-foreground font-semibold px-5 py-2.5 rounded-full text-sm hover:opacity-90 transition-all font-body whitespace-nowrap">
-              Subscribe
-            </button>
-          </div>
+          
         </div>
       </div>
 

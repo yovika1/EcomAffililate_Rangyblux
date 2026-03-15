@@ -1,5 +1,6 @@
 import { ArrowRight, Star, Sparkles, TrendingUp } from "lucide-react";
 import heroBanner from "@/assets/hero-banner.jpg";
+import { Link } from "react-router-dom";
 
 interface HeroSectionProps {
   onOpenChat: () => void;
@@ -38,13 +39,13 @@ const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-            <a
-              href="#trending"
+            <Link
+              to="/category/general/trending"
               className="inline-flex items-center justify-center gap-2 gradient-gold text-foreground font-semibold px-7 py-3.5 rounded-full hover:opacity-90 transition-all duration-200 shadow-gold hover:shadow-lg hover:-translate-y-0.5"
             >
               Shop Trending
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
             <button
               onClick={onOpenChat}
               className="inline-flex items-center justify-center gap-2 bg-white/15 backdrop-blur-sm text-primary-foreground border border-white/30 font-semibold px-7 py-3.5 rounded-full hover:bg-white/25 transition-all duration-200"
