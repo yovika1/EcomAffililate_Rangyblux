@@ -10,6 +10,7 @@ import { AIChatTrigger } from "@/components/AIChatTrigger";
 
 import { Star } from "lucide-react";
 import type { Product } from "@/types/Products";
+import API_BASE from "@/config";
 
 interface BlogType {
   _id: string;
@@ -49,13 +50,13 @@ const ProductPage = () => {
     const fetchData = async () => {
       try {
         const singleRes = await axios.get(
-          `http://localhost:8081/getBlogs/${id}`
+          `${API_BASE}/getBlogs/${id}`
         );
         setCurrentBlog(singleRes.data.blog);
 
         // 2️⃣ All products (for related)
         const allRes = await axios.get(
-          `http://localhost:8081/getBlogs`
+          `${API_BASE}/getBlogs`
         );
         const blogs = allRes.data.blogs || allRes.data;
         setAllBlogs(Array.isArray(blogs) ? blogs : []);

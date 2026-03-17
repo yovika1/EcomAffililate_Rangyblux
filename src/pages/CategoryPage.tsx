@@ -9,6 +9,7 @@ import { SlidersHorizontal, ChevronDown } from "lucide-react";
 import type { BackendBlog } from "@/types/BackendBlog";
 import type { Product } from "@/types/Products";
 import { useParams } from "react-router-dom";
+import API_BASE from "@/config";
 
 
 const CategoryPage = () => {
@@ -27,8 +28,8 @@ const [filterDiscount, setFilterDiscount] = useState(false);
     const fetchBlogs = async () => {
       try {
         const url = subCategory
-      ? `http://localhost:8081/getBlogs?category=${category}&subCategory=${subCategory}`
-        : `http://localhost:8081/getBlogs?category=${category}`;
+      ? `${API_BASE}/getBlogs?category=${category}&subCategory=${subCategory}`
+        : `${API_BASE}/getBlogs?category=${category}`;
         
       
       const res = await axios.get(url);

@@ -9,6 +9,7 @@ import { AIChatTrigger } from "@/components/AIChatTrigger";
 import { Sparkles } from "lucide-react";
 
 import type { Product } from "@/types/Products";
+import API_BASE from "@/config";
 
 interface ProductType {
   _id: string;
@@ -43,7 +44,7 @@ const NewArrivalPage = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:8081/getblogs");
+        const res = await axios.get(`${API_BASE}/getblogs`);
         const data = res.data.blogs || res.data;
 
         if (Array.isArray(data)) {

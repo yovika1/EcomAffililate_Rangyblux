@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { Search, Menu, X, Sparkles, ChevronDown } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {  Menu, X, Sparkles, ChevronDown } from "lucide-react";
 
 interface NavbarProps {
   onOpenChat?: () => void;
@@ -29,6 +29,10 @@ const categories = [
 const Navbar = ({ onOpenChat }: NavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const {pathname} = useLocation()
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, [pathname]);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border">
@@ -36,7 +40,6 @@ const Navbar = ({ onOpenChat }: NavbarProps) => {
 
         <div className="flex items-center justify-between h-16">
 
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 gradient-gold rounded-full flex items-center justify-center">
               R

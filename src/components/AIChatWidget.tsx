@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { X, Send, Sparkles, Bot, User } from "lucide-react";
 import axios from "axios";
+import API_BASE from "@/config";
 
 interface Message {
   role: "user" | "assistant";
@@ -89,7 +90,7 @@ interface AIChatTriggerProps {
     setIsTyping(true);
 
     try {
-      const res = await axios.post("http://localhost:8081/ai/chat", {
+      const res = await axios.post(`${API_BASE}/ai/chat`, {
         message: text,
       });
 

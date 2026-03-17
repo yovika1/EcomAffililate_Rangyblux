@@ -16,7 +16,7 @@ import categoryMakeup from "@/assets/category-makeup.jpg";
 import type { BackendBlog } from "@/types/BackendBlog";
 import type { Product } from "@/types/Products";
 import CategorySection from "@/components/CategorySection";
-
+import API_BASE from "@/config";
 
 const Index = () => {
 const [blogs, setBlogs] = useState<BackendBlog[]>([]);
@@ -26,7 +26,7 @@ const [blogs, setBlogs] = useState<BackendBlog[]>([]);
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:8081/getBlogs");
+        const res = await axios.get(`${API_BASE}/getBlogs`);
         const data = res.data.blogs || res.data;
         setBlogs(Array.isArray(data) ? data : []);
       } catch (err) {

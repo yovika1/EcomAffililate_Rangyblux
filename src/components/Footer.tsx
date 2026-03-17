@@ -1,5 +1,5 @@
 import { footerLinks } from "@/routes/Route";
-import { Sparkles, Instagram, Twitter, Facebook, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { Sparkles, Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import ShareButtons from "@/pages/ShareButtons";
 
