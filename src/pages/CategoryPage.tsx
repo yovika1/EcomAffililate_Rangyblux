@@ -129,7 +129,7 @@ const [filterDiscount, setFilterDiscount] = useState(false);
               <span className="text-sm text-muted-foreground">
                 {filteredProducts.length} Products
               </span>
-              <button
+              {/* <button
                 onClick={() => setFilterDiscount(!filterDiscount)}
                 className={`text-sm px-3 py-1.5 rounded-full border transition ${
                   filterDiscount
@@ -137,8 +137,8 @@ const [filterDiscount, setFilterDiscount] = useState(false);
                     : "border-border text-muted-foreground"
                 }`}
               >
-                40%+ OFF
-              </button>
+                70%+ OFF
+              </button> */}
             </div>
 
             <div className="flex items-center gap-2">

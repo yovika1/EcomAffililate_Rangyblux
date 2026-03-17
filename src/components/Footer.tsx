@@ -60,7 +60,7 @@ const Footer = () => {
             <div className="space-y-2.5 text-sm text-primary-foreground/60 font-body">
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-accent" />
-                <span>hello@rangyblux.com</span>
+                <span>info@rangyblux.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-accent" />
@@ -77,7 +77,7 @@ const Footer = () => {
 
       <div className="border-t border-primary-foreground/10 py-5 px-4">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-primary-foreground/40 font-body">
-          <p>© 2025 rangyblux. All rights reserved.
+          <p>© 2026 rangyblux. All rights reserved.
             <Link to="/affiliate-disclosure"
             className="hover:text-accent transition-colors"> Affiliate Disclosure</Link>
              : We earn commission on purchases.</p>

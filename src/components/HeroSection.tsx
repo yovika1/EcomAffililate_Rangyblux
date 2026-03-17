@@ -23,7 +23,7 @@ const HeroSection = ({ onOpenChat }: HeroSectionProps) => {
         <div className="max-w-xl">
           <div className="inline-flex items-center gap-2 bg-accent/20 backdrop-blur-sm border border-accent/40 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-6 animate-slide-up">
             <TrendingUp className="w-3.5 h-3.5" />
-            <span>New Arrivals — Spring 2025</span>
+            <span>New Arrivals — Spring 2026</span>
           </div>
 
           <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight mb-6 animate-slide-up" style={{ animationDelay: '0.1s' }}>

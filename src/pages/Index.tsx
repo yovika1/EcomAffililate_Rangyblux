@@ -132,7 +132,7 @@ tag: `${beautyCount} Products`,
                 </h2>
               </div>
               <Link
-                to="/trending"
+                to="/category/general/trending"
                 className="flex items-center gap-2 text-sm font-semibold text-primary border border-primary px-5 py-2.5 rounded-full hover:bg-primary hover:text-primary-foreground transition-all font-body"
               >
                 View All <ArrowRight className="w-4 h-4" />
