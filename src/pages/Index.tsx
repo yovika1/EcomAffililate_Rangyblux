@@ -27,6 +27,7 @@ const [blogs, setBlogs] = useState<BackendBlog[]>([]);
     const fetchBlogs = async () => {
       try {
         const res = await axios.get(`${API_BASE}/getBlogs`);
+        console.log("API_BASE:", API_BASE);
         const data = res.data.blogs || res.data;
         setBlogs(Array.isArray(data) ? data : []);
       } catch (err) {
