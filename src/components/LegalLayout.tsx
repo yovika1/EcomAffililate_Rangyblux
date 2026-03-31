@@ -24,7 +24,7 @@ const LegalLayout = ({ title, children }) => {
             href="mailto:hello@rangyblux.com"
             className="text-pink-600 font-medium hover:underline"
           >
-            hello@rangyblux.com
+            {/* hello@rangyblux.com */}
           </a>
         </div>
 

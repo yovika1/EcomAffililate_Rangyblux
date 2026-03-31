@@ -60,11 +60,9 @@ const Footer = () => {
             <div className="space-y-2.5 text-sm text-primary-foreground/60 font-body">
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-accent" />
-                {/* <span>info@rangyblux.com</span> */}
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-accent" />
-                {/* <span>+91 98765 43210</span> */}
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-accent" />
