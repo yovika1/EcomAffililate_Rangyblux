@@ -21,7 +21,7 @@ export const getCategories = (categoryCounts: {
     tag: `${categoryCounts.general} Products`,
     href: "/general",
     key: "general",
-    color: "from-blue-900/70 to-blue-700/40",
+    color: "from-blue-900/70 to-blue-700/40",                       
   },
   {
     name: "Makeup & Beauty",
