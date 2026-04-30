@@ -2,7 +2,6 @@ import { footerLinks } from "@/routes/Route";
 import { Sparkles, Mail, Phone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import ShareButtons from "@/pages/ShareButtons";
-import WhatsAppFloat from "./MessageCircle";
 
 const Footer = () => {
   return (
