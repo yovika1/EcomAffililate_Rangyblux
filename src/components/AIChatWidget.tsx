@@ -58,12 +58,13 @@ const AIChatWidget = ({ isOpen, onClose }: AIChatTriggerProps) => {
   ) => {
     let currentText = "";
 
-    const msgIndex = messages.length;
+ let index: number;
 
-    setMessages((prev) => [
-      ...prev,
-      { role: "assistant", content: "" },
-    ]);
+    setMessages((prev) => { 
+          index = prev.length;
+    return [...prev,
+      { role: "assistant", content: "" }];
+  });
 
     for (let i = 0; i < text.length; i++) {
       currentText += text[i];
@@ -73,9 +74,9 @@ const AIChatWidget = ({ isOpen, onClose }: AIChatTriggerProps) => {
       setMessages((prev) => {
         const updated = [...prev];
 
-        if (!updated[msgIndex]) return prev;
+        if (!updated[index]) return prev;
 
-        updated[msgIndex] = {
+        updated[index] = {
           role: "assistant",
           content: currentText,
           products,
@@ -135,7 +136,9 @@ const AIChatWidget = ({ isOpen, onClose }: AIChatTriggerProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed bottom-6 right-4 bg-white z-50 w-[360px] h-[520px] flex flex-col shadow-xl rounded-2xl overflow-hidden">
+    <div className="fixed bottom-0 right-0  w-full h-[100dvh]
+    sm:bottom-6 sm:right-4 sm:w-[350px] sm:h-[500px]
+     flex flex-col shadow-xl rounded-none sm:rounded-2xl overflow-hidden bg-white z-50">
 
       <div className="bg-primary px-4 py-3 flex justify-between items-center">
         <p className="text-white font-semibold">
@@ -162,7 +165,7 @@ const AIChatWidget = ({ isOpen, onClose }: AIChatTriggerProps) => {
               )}
             </div>
 
-            <div className="max-w-[70%] space-y-2">
+            <div className="max-w-[85%] sm:max-w-[70%] space-y-2">
               <div className="text-xs bg-white px-3 py-2 rounded-xl shadow">
                 {msg.content}
               </div>
@@ -230,8 +233,9 @@ const AIChatWidget = ({ isOpen, onClose }: AIChatTriggerProps) => {
       )}
 
    
-      <div className="p-3 flex gap-2 border-t">
+      <div className="p-3 flex gap-2 border-t bg-white">
         <input
+          className="flex-1 px-3 py-2 rounded-full bg-gray-100 outline-none text-sm"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => {
@@ -240,7 +244,6 @@ const AIChatWidget = ({ isOpen, onClose }: AIChatTriggerProps) => {
             }
           }}
           placeholder="Ask your AI stylist..."
-          className="flex-1 px-3 py-2 rounded-full bg-gray-100 outline-none"
         />
 
         <button
