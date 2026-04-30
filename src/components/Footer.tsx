@@ -65,7 +65,6 @@ const Footer = () => {
             </h4>
             <div className="flex gap-3 mb-5">
               <ShareButtons shareUrl={window.location.href} />
-              <WhatsAppFloat />
             </div>
             <div className="space-y-2.5 text-sm text-primary-foreground/60 font-body">
               <div className="flex items-center gap-2">
