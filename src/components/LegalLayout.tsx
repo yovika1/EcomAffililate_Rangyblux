@@ -21,10 +21,10 @@ const LegalLayout = ({ title, children }) => {
           </p>
 
           <a
-            href="mailto:hello@rangyblux.com"
+            href={`mailto:${import.meta.env.VITE_EMAIL}`}
             className="text-pink-600 font-medium hover:underline"
           >
-            {/* hello@rangyblux.com */}
+             {import.meta.env.VITE_EMAIL}        
           </a>
         </div>
 

@@ -1,6 +1,7 @@
 import { footerLinks } from "@/routes/Route";
-import { Sparkles, Mail, Phone, MapPin } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
+import { SocialMediaConnect } from "@/components/ui/socialMediaConnect";
 import ShareButtons from "@/pages/ShareButtons";
 
 const Footer = () => {
@@ -20,7 +21,7 @@ const Footer = () => {
       </div>
 
       <div className="py-14 px-4">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-7">
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 gradient-gold rounded-full flex items-center justify-center">
@@ -57,25 +58,12 @@ const Footer = () => {
               </ul>
             </div>
           ))}
-
           <div>
-            <h4 className="font-display text-base font-semibold mb-4">
-              Connect
-            </h4>
-            <div className="flex gap-3 mb-5">
+            <SocialMediaConnect shareUrl={window.location.href} />
+          </div>
+          <div>
+            <div className="flex items-end gap-2 mb-4">
               <ShareButtons shareUrl={window.location.href} />
-            </div>
-            <div className="space-y-2.5 text-sm text-primary-foreground/60 font-body">
-              <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-accent" />
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-accent" />
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-accent" />
-                <span> India</span>
-              </div>
             </div>
           </div>
         </div>

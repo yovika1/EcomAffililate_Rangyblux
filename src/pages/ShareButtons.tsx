@@ -16,22 +16,18 @@ const ShareButtons = ({ shareUrl, fadeInUp }: ShareButtonsProps) => {
     setTimeout(() => setCopied(false), 3000);
   };
 
-  // 🔥 Your WhatsApp number
-  const phoneNumber = "91XXXXXXXXXX";
 
-  // 🔹 Message for sharing
-  const shareMessage = `✨ Check this out from Rangyblux!
+  const shareMessage = `Check this out from Rangyblux!
 ${shareUrl}
 
-Looks amazing 👗🔥`;
+Looks amazing`;
 
-  // 🔹 Message for direct chat
-  const connectMessage = `Hi! I'm interested in this 👇
-${shareUrl}`;
 
-  // ✅ Links
-  const whatsappShareLink = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`;
-  const whatsappConnectLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(connectMessage)}`;
+
+  const whatsappShareLink = `https://wa.me/?text=${encodeURIComponent(
+    shareMessage
+  )}`;
+
 
   return (
     <motion.div
@@ -39,15 +35,16 @@ ${shareUrl}`;
       whileInView="visible"
       variants={fadeInUp}
       viewport={{ once: true }}
-      className="flex flex-col items-center gap-4"
+      className="flex flex-col gap-4"
     >
-      {/* 🔥 WhatsApp Section */}
-      <div className="flex flex-col items-center gap-2">
-        <span className="text-sm font-medium">WhatsApp</span>
+
+      
+      <div className="font-display flex flex-col  gap-2">
+        <span className="font-medium">Share</span>
 
         <div className="flex items-center gap-4">
-          {/* ✅ Share */}
-          <a
+
+           <a
             href={whatsappShareLink}
             target="_blank"
             rel="noopener noreferrer"
@@ -56,25 +53,6 @@ ${shareUrl}`;
             <MessageCircle className="w-5 h-5 text-green-500" />
             <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
           </a>
-
-          {/* ✅ Connect */}
-          <a
-            href={whatsappConnectLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-xs text-green-600 font-medium hover:underline"
-          >
-            Chat with us
-          </a>
-        </div>
-      </div>
-
-      {/* 🔹 Share Section */}
-      <div className="flex flex-col items-center gap-2">
-        <span className="text-sm font-medium">Share</span>
-
-        <div className="flex items-center gap-4">
-          {/* Facebook */}
           <button
             onClick={() =>
               window.open(
@@ -90,18 +68,16 @@ ${shareUrl}`;
             <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
           </button>
 
-          {/* Instagram (Copy Link) */}
           <button onClick={handleCopy} className="group relative">
-            <Instagram className="w-5 h-5 text-pink-500" />
+            <Instagram className="w-5 h-5 text-pink-500"/>
             <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-pink-500 transition-all duration-300 group-hover:w-full"></span>
           </button>
         </div>
       </div>
 
-      {/* ✅ Copy Toast */}
       {copied && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-600 text-white text-sm px-4 py-2 rounded-full shadow-lg">
-          ✅ Link copied! Paste it in Instagram story, DM, or bio.
+          Link copied! Paste it in Instagram story, DM, or bio.
         </div>
       )}
     </motion.div>
