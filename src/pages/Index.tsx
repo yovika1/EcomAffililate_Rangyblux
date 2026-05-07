@@ -40,6 +40,12 @@ const [blogs, setBlogs] = useState<BackendBlog[]>([]);
     fetchBlogs();
   }, []);
 
+  useEffect(() => {
+  setTimeout(() => {
+    setChatOpen(true);
+  }, 4000);
+}, []);
+
 const mappedProducts: Product[] = useMemo(() => {
   return blogs
     .filter((b) => b.product)

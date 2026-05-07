@@ -15,11 +15,12 @@ import { TermsService } from "./pages/TermsofService";
 import { AboutContactFAQ } from "./pages/help/UserHelp";
 import NewArrivalPage from "./pages/NewArrivalPage";
 import { useEffect } from "react";
+import useTracking from "./hooks/useTracking";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-
+    useTracking();
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>

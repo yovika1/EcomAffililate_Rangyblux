@@ -12,15 +12,18 @@ import { Star } from "lucide-react";
 import type { Product } from "@/types/Products";
 import API_BASE from "@/config";
 
+
+import { trackViewContent, trackPurchase } from "@/utils/analytics";
+
 interface BlogType {
   _id: string;
   category: string;
   badge?: string;
-   details?: {
+  details?: {
     _id: string;
     name: string;
     value: string;
-  }[]; 
+  }[];
   product?: {
     _id: string;
     productName: string;
@@ -32,7 +35,6 @@ interface BlogType {
     reviewsCount: number;
     affiliateUrl: string;
     description?: string;
-    
   };
 }
 
@@ -49,15 +51,10 @@ const ProductPage = () => {
 
     const fetchData = async () => {
       try {
-        const singleRes = await axios.get(
-          `${API_BASE}/getBlogs/${id}`
-        );
+        const singleRes = await axios.get(`${API_BASE}/getBlogs/${id}`);
         setCurrentBlog(singleRes.data.blog);
 
-        // 2️⃣ All products (for related)
-        const allRes = await axios.get(
-          `${API_BASE}/getBlogs`
-        );
+        const allRes = await axios.get(`${API_BASE}/getBlogs`);
         const blogs = allRes.data.blogs || allRes.data;
         setAllBlogs(Array.isArray(blogs) ? blogs : []);
       } catch (err) {
@@ -86,12 +83,17 @@ const ProductPage = () => {
       affiliateUrl: blog.product.affiliateUrl,
       badge: blog.badge || "",
       category: blog.category,
-  details: blog.details || [],
-      // description: blog.product.description || "",
+      details: blog.details || [],
     };
   };
 
   const product = currentBlog ? mapToProduct(currentBlog) : null;
+
+  useEffect(() => {
+    if (product) {
+      trackViewContent();
+    }
+  }, [product]);
 
   const related = useMemo(() => {
     if (!product) return [];
@@ -109,6 +111,16 @@ const ProductPage = () => {
   }, [allBlogs, product]);
 
   const stars = Math.floor(product?.rating || 0);
+
+  const handleBuyClick = () => {
+    trackPurchase();
+
+    setTimeout(() => {
+      if (product?.affiliateUrl) {
+        window.open(product.affiliateUrl, "_blank");
+      }
+    }, 120);
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -147,7 +159,7 @@ const ProductPage = () => {
                   </h1>
 
                   <div className="flex items-center gap-2">
-                    {[1,2,3,4,5].map((i) => (
+                    {[1, 2, 3, 4, 5].map((i) => (
                       <Star
                         key={i}
                         className={`w-5 h-5 ${
@@ -171,26 +183,24 @@ const ProductPage = () => {
                       ₹{product.originalPrice}
                     </span>
                   </div>
-{/* 
-                  <p className="text-muted-foreground">
-                    {product.description}
-                  </p> */}
+
                   <ul className="text-sm text-muted-foreground space-y-1">
                     {product.details?.map((d) => (
                       <li key={d._id}>
-                        <span className="font-medium text-foreground">{d.name}</span> — {d.value}
+                        <span className="font-medium text-foreground">
+                          {d.name}
+                        </span>{" "}
+                        — {d.value}
                       </li>
                     ))}
                   </ul>
 
-                  <a
-                    href={product.affiliateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={handleBuyClick}
                     className="bg-primary text-white py-3 px-6 rounded-xl text-center font-semibold hover:opacity-90"
                   >
                     Buy Now
-                  </a>
+                  </button>
                 </div>
               </div>
             </section>

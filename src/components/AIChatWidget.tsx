@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { X, Send, Bot, User } from "lucide-react";
 import axios from "axios";
 import API_BASE from "@/config";
+import { trackInitiateCheckout, trackViewContent } from "@/utils/analytics";
 
 interface Message {
   role: "user" | "assistant";
@@ -43,7 +44,6 @@ const AIChatWidget = ({ isOpen, onClose }: AIChatTriggerProps) => {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // ✅ Scroll fix
   useEffect(() => {
     setTimeout(() => {
       messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -91,6 +91,8 @@ const AIChatWidget = ({ isOpen, onClose }: AIChatTriggerProps) => {
   const sendMessage = async (text: string) => {
     if (!text.trim()) return;
 
+    trackInitiateCheckout();
+
     const sessionId =
       localStorage.getItem("sessionId") || crypto.randomUUID();
 
@@ -117,6 +119,11 @@ const AIChatWidget = ({ isOpen, onClose }: AIChatTriggerProps) => {
 
       const message =
         data.message || "Here are some suggestions for you 👇";
+
+            if (products && products.length > 0) {
+      trackViewContent();
+    }
+
 
       await typeMessage(message, products, data.fallbackMessage);
 
