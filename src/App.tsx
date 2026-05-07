@@ -14,7 +14,6 @@ import { AffiliateDisclosure } from "./pages/AffiliateDisclosure";
 import { TermsService } from "./pages/TermsofService";
 import { AboutContactFAQ } from "./pages/help/UserHelp";
 import NewArrivalPage from "./pages/NewArrivalPage";
-import { useEffect } from "react";
 import useTracking from "./hooks/useTracking";
 
 const queryClient = new QueryClient();
@@ -26,7 +25,6 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
 
@@ -53,7 +51,6 @@ const App = () => {
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );

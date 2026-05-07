@@ -8,7 +8,7 @@ const useTracking = () => {
   useEffect(() => {
     trackPageView();
     trackGAPageView(location.pathname);
-  }, [location]);
+  }, [location.pathname]);
 };
 
 export default useTracking;
