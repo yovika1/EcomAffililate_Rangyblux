@@ -16,12 +16,24 @@ const ProductCard = ({ product }: ProductCardProps) => {
     <div className="group bg-card rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-border flex flex-col">
       
       {/* Image */}
-      <Link to={`/product/${product.blogId}`} className="relative overflow-hidden aspect-[3/4] block">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-        />
+     <Link
+  to={`/product/${product.blogId}`}
+  className="relative overflow-hidden block"
+>
+  <img
+    src={product.image}
+    alt={product.name}
+    className="
+      w-full
+      h-[280px]
+      sm:h-[320px]
+      lg:h-[340px]
+      object-cover
+      group-hover:scale-105
+      transition-transform
+      duration-700
+    "
+  />
 
         {/* Badge */}
         {product.badge && (

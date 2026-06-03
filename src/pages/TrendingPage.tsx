@@ -74,8 +74,11 @@ const TrendingPage = () => {
           id: p._id,
            blogId: blog._id,
           name: p.productName,
-          image: p.imageUrl,
-          price: Number(p.currentPrice) || 0,
+ image:
+        p.imageUrl?.startsWith("http")
+          ? p.imageUrl
+    : `${API_BASE}${p.imageUrl}`,     
+         price: Number(p.currentPrice) || 0,
           originalPrice: Number(p.originalPrice) || 0,
           discountPercent: Number(p.discountPercent) || 0,
           rating: Number(p.rating) || 0,

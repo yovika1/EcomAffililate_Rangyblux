@@ -27,7 +27,6 @@ const [blogs, setBlogs] = useState<BackendBlog[]>([]);
     const fetchBlogs = async () => {
       try {
         const res = await axios.get(`${API_BASE}/getBlogs`);
-        console.log("API_BASE:", API_BASE);
         const data = res.data.blogs || res.data;
         setBlogs(Array.isArray(data) ? data : []);
       } catch (err) {
@@ -53,7 +52,10 @@ const mappedProducts: Product[] = useMemo(() => {
       id: b.product!._id, 
       blogId: b._id, 
       name: b.product!.productName,
-      image: b.product!.imageUrl,
+       image:
+        b.product.imageUrl?.startsWith("http")
+          ? b.product.imageUrl
+    : `${API_BASE}${b.product.imageUrl}`,
       price: b.product!.currentPrice,
       originalPrice: b.product!.originalPrice,
       discountPercent: b.product!.discountPercent,

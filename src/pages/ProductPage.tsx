@@ -74,8 +74,11 @@ const ProductPage = () => {
       id: blog.product._id,
       blogId: blog._id,
       name: blog.product.productName,
-      image: blog.product.imageUrl,
-      price: blog.product.currentPrice,
+      image:
+        blog.product.imageUrl?.startsWith("http")
+          ? blog.product.imageUrl
+    : `${API_BASE}${blog.product.imageUrl}`,
+          price: blog.product.currentPrice,
       originalPrice: blog.product.originalPrice,
       discountPercent: blog.product.discountPercent,
       rating: blog.product.rating,
@@ -126,7 +129,7 @@ const ProductPage = () => {
     <div className="min-h-screen bg-background">
       <Navbar onOpenChat={() => setChatOpen(true)} />
 
-      <main className="pt-16">
+      <main className="pt-6">
         {loading ? (
           <div className="flex items-center justify-center h-[60vh]">
             Loading...
@@ -151,10 +154,11 @@ const ProductPage = () => {
                   src={product.image}
                   alt={product.name}
                   className="w-full rounded-2xl"
+                    
                 />
 
-                <div className="flex flex-col gap-5">
-                  <h1 className="text-3xl font-bold">
+                <div className="flex flex-col gap-4">
+                  <h1 className="text-3xl font-bold ">
                     {product.name}
                   </h1>
 
