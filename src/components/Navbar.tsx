@@ -23,7 +23,6 @@ const categories = [
       { label: "Haircare", href: "/category/beauty/haircare" },
     ],
   },
-  
 ];
 
 const Navbar = ({ onOpenChat }: NavbarProps) => {
